@@ -1,0 +1,21 @@
+one_letter ={'VAL':'V', 'ILE':'I', 'LEU':'L', 'GLU':'E', 'GLN':'Q', 'ASP':'D', 'ASN':'N', 'HIS':'H', 'TRP':'W', 'PHE':'F', 'TYR':'Y', 'ARG':'R', 'LYS':'K', 'SER':'S', 'THR':'T', 'MET':'M', 'ALA':'A', 'GLY':'G', 'PRO':'P', 'CYS':'C'}
+delete *
+load c:\pdbe\1VLR.pdb
+hide all
+set seq_view, 1
+cmd.set("ray_trace_fog",1)
+cmd.set("ray_shadows",1)
+cmd.set("antialias",1)
+cmd.set("use_shaders", 1)
+show cartoon
+util.cbc
+color red, chain A & ss S
+color red, chain X & ss S
+color orange, chain A & ss H
+color orange, chain X & ss H
+color magenta, chain B & ss S
+color magenta, chain Y & ss S
+color gold, chain B & ss H
+color gold, chain Y & ss H
+label n. ca, "%s%s" %(one_letter[resn],resi)
+#print cmd.get_fastastr("sele")
